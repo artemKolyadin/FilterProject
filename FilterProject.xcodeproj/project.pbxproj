@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1431D3C992A6340D8421E202 /* Pods_FilterProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */; };
+		8717DD3F2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */; };
+		8717DD43212421D400FD01B9 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */; };
+		8717DD44212421D400FD01B9 /* HeaderCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */; };
+		8717DD4721243F9000FD01B9 /* AttributeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */; };
+		8717DD4821243F9000FD01B9 /* AttributeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */; };
 		871E52D421218C8300D3C824 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E52D221218C8300D3C824 /* Models.swift */; };
 		871E52D621218CF700D3C824 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E52D521218CF700D3C824 /* ServerManager.swift */; };
 		87B73A9D212185DE0044D758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73A9C212185DE0044D758 /* AppDelegate.swift */; };
@@ -15,21 +20,22 @@
 		87B73AA4212185E30044D758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AA3212185E30044D758 /* Assets.xcassets */; };
 		87B73AA7212185E30044D758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AA5212185E30044D758 /* LaunchScreen.storyboard */; };
 		87B73AAF212186530044D758 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AAE212186530044D758 /* SearchViewController.swift */; };
-		87B73ABC212187BF0044D758 /* AttributeFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB4212187BF0044D758 /* AttributeFilterView.swift */; };
-		87B73ABD212187BF0044D758 /* CheckBoxFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB5212187BF0044D758 /* CheckBoxFilterView.swift */; };
-		87B73ABE212187BF0044D758 /* CheckBoxFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AB6212187BF0044D758 /* CheckBoxFilterView.xib */; };
 		87B73ABF212187BF0044D758 /* FiltersContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AB7212187BF0044D758 /* FiltersContainerView.xib */; };
-		87B73AC0212187BF0044D758 /* PriceFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB8212187BF0044D758 /* PriceFilterView.swift */; };
 		87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB9212187BF0044D758 /* FiltersContainerView.swift */; };
-		87B73AC2212187BF0044D758 /* AttributeFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73ABA212187BF0044D758 /* AttributeFilterView.xib */; };
-		87B73AC3212187BF0044D758 /* PriceFilterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73ABB212187BF0044D758 /* PriceFilterView.xib */; };
+		87DE7D682126C80800C63687 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38F8C5AC0BFF3489DEB4F584 /* Pods-FilterProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilterProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FilterProject/Pods-FilterProject.release.xcconfig"; sourceTree = "<group>"; };
 		53F008A11E55610336B85748 /* Pods-FilterProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilterProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilterProject/Pods-FilterProject.debug.xcconfig"; sourceTree = "<group>"; };
+		8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCollectoinViewCell.swift; sourceTree = "<group>"; };
+		8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
+		8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionView.xib; sourceTree = "<group>"; };
+		8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCollectionViewCell.swift; sourceTree = "<group>"; };
+		8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttributeCollectionViewCell.xib; sourceTree = "<group>"; };
 		871E52D221218C8300D3C824 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		871E52D521218CF700D3C824 /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
+		876C30502125BBDB0097455E /* RangeSeekSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RangeSeekSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B73A99212185DE0044D758 /* FilterProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FilterProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		87B73A9C212185DE0044D758 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		87B73AA1212185DE0044D758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -37,14 +43,9 @@
 		87B73AA6212185E30044D758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B73AA8212185E30044D758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B73AAE212186530044D758 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		87B73AB4212187BF0044D758 /* AttributeFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AttributeFilterView.swift; sourceTree = "<group>"; };
-		87B73AB5212187BF0044D758 /* CheckBoxFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckBoxFilterView.swift; sourceTree = "<group>"; };
-		87B73AB6212187BF0044D758 /* CheckBoxFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CheckBoxFilterView.xib; sourceTree = "<group>"; };
 		87B73AB7212187BF0044D758 /* FiltersContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersContainerView.xib; sourceTree = "<group>"; };
-		87B73AB8212187BF0044D758 /* PriceFilterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PriceFilterView.swift; sourceTree = "<group>"; };
 		87B73AB9212187BF0044D758 /* FiltersContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersContainerView.swift; sourceTree = "<group>"; };
-		87B73ABA212187BF0044D758 /* AttributeFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AttributeFilterView.xib; sourceTree = "<group>"; };
-		87B73ABB212187BF0044D758 /* PriceFilterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PriceFilterView.xib; sourceTree = "<group>"; };
+		87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
 		FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilterProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -116,12 +117,12 @@
 			children = (
 				87B73AB9212187BF0044D758 /* FiltersContainerView.swift */,
 				87B73AB7212187BF0044D758 /* FiltersContainerView.xib */,
-				87B73AB5212187BF0044D758 /* CheckBoxFilterView.swift */,
-				87B73AB6212187BF0044D758 /* CheckBoxFilterView.xib */,
-				87B73AB4212187BF0044D758 /* AttributeFilterView.swift */,
-				87B73ABA212187BF0044D758 /* AttributeFilterView.xib */,
-				87B73AB8212187BF0044D758 /* PriceFilterView.swift */,
-				87B73ABB212187BF0044D758 /* PriceFilterView.xib */,
+				8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */,
+				8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */,
+				8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */,
+				87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */,
+				8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */,
+				8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -129,6 +130,7 @@
 		909811A14F151A98121AC002 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				876C30502125BBDB0097455E /* RangeSeekSlider.framework */,
 				FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */,
 			);
 			name = Frameworks;
@@ -197,9 +199,8 @@
 				87B73AA7212185E30044D758 /* LaunchScreen.storyboard in Resources */,
 				87B73AA4212185E30044D758 /* Assets.xcassets in Resources */,
 				87B73ABF212187BF0044D758 /* FiltersContainerView.xib in Resources */,
-				87B73AC3212187BF0044D758 /* PriceFilterView.xib in Resources */,
-				87B73AC2212187BF0044D758 /* AttributeFilterView.xib in Resources */,
-				87B73ABE212187BF0044D758 /* CheckBoxFilterView.xib in Resources */,
+				8717DD4821243F9000FD01B9 /* AttributeCollectionViewCell.xib in Resources */,
+				8717DD44212421D400FD01B9 /* HeaderCollectionView.xib in Resources */,
 				87B73AA2212185DE0044D758 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -250,12 +251,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8717DD3F2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift in Sources */,
 				87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */,
-				87B73ABC212187BF0044D758 /* AttributeFilterView.swift in Sources */,
-				87B73AC0212187BF0044D758 /* PriceFilterView.swift in Sources */,
+				8717DD43212421D400FD01B9 /* HeaderCollectionView.swift in Sources */,
+				8717DD4721243F9000FD01B9 /* AttributeCollectionViewCell.swift in Sources */,
 				871E52D421218C8300D3C824 /* Models.swift in Sources */,
+				87DE7D682126C80800C63687 /* PriceCollectionViewCell.swift in Sources */,
 				87B73AAF212186530044D758 /* SearchViewController.swift in Sources */,
-				87B73ABD212187BF0044D758 /* CheckBoxFilterView.swift in Sources */,
 				87B73A9D212185DE0044D758 /* AppDelegate.swift in Sources */,
 				871E52D621218CF700D3C824 /* ServerManager.swift in Sources */,
 			);

@@ -9,7 +9,7 @@
 import UIKit
 import UIKit.UIGestureRecognizerSubclass
 
-// MARK: - States for FilterView animation
+// MARK: - States for FilterContainerView animation
 
 private enum State {
     case closed
@@ -21,6 +21,7 @@ private enum State {
 }
 
 class SearchViewController: UITableViewController {
+    
     
     private lazy var blurView: UIVisualEffectView = {
         let blurView = UIVisualEffectView()
@@ -40,7 +41,6 @@ class SearchViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        filterViewOffset = (self.navigationController?.view.frame.size.height)!
         filterLayout()
     }
     
@@ -49,25 +49,10 @@ class SearchViewController: UITableViewController {
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.view.backgroundColor = .white
     }
-    
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.textLabel?.text = String(describing: indexPath.row)
-        return cell
-    }
 
     private var bottomConstraint = NSLayoutConstraint()
     
     func filterLayout () {
-        
         navigationController?.view.addSubview(blurView)
         blurView.leadingAnchor.constraint(equalTo: (navigationController?.view.leadingAnchor)!).isActive = true
         blurView.trailingAnchor.constraint(equalTo: (navigationController?.view.trailingAnchor)!).isActive = true
@@ -75,6 +60,8 @@ class SearchViewController: UITableViewController {
         blurView.bottomAnchor.constraint(equalTo: (navigationController?.view.bottomAnchor)!).isActive = true
         blurView.frame = (navigationController?.view.frame)!
         blurView.isHidden = true
+        
+        filterViewOffset = (self.navigationController?.view.frame.size.height)!
         
         filterView.tappableView.addGestureRecognizer(panRecognizer)
         filterView.translatesAutoresizingMaskIntoConstraints = false
@@ -85,7 +72,6 @@ class SearchViewController: UITableViewController {
         bottomConstraint.isActive = true
         filterView.heightAnchor.constraint(equalToConstant: (navigationController?.view.frame.height)!).isActive = true
         filterView.roundedCornerView.layer.maskedCorners = [.layerMaxXMinYCorner,.layerMinXMinYCorner]
-
     }
     
     // MARK: - Animation
@@ -185,6 +171,7 @@ class SearchViewController: UITableViewController {
         runningAnimators.append(lineAngleAnimator)
     }
     
+    
     @objc private func popupViewPanned(recognizer: UIPanGestureRecognizer) {
         switch recognizer.state {
         case .began:
@@ -243,6 +230,7 @@ class SearchViewController: UITableViewController {
     }
     
     
+    
     @IBAction func filterButtonClicked(_ sender: Any) {
         animateTransitionIfNeeded(to: .open, duration: 0.7)
     }
@@ -260,4 +248,22 @@ class SearchViewController: UITableViewController {
         
     }
     
+}
+
+    // MARK:  UITableViewDatasource
+
+extension SearchViewController {
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 20
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.textLabel?.text = String(describing: indexPath.row)
+        return cell
+    }
 }

@@ -8,20 +8,7 @@
 
 import UIKit
 
-protocol FlagFilterProtocol {
-    var state: FlagFilterState {get set}
-}
-
-enum FlagFilterState {
-    case enabled
-    case disabled
-    
-    var opposite: FlagFilterState {
-        return self == .enabled ? .disabled : .enabled
-    }
-}
-
-class FiltersContainerView: UIView, AttributeFilterDelegate, CheckBoxFilterDelegate {
+class FiltersContainerView: UIView {
     
     @IBOutlet weak var contentView: UIView!
     @IBOutlet weak var tappableView: UIView!
@@ -29,18 +16,14 @@ class FiltersContainerView: UIView, AttributeFilterDelegate, CheckBoxFilterDeleg
     @IBOutlet weak var lineAngleIndicatorContainer: UIView!
     @IBOutlet weak var lineAngleIndicator: UIImageView!
     @IBOutlet weak var resetButton: UIButton!
-    @IBOutlet weak var mainFiltersContainer: UIView!
-    @IBOutlet weak var mainFiltersStackView: UIStackView!
-    @IBOutlet weak var otherFiltersContainer: UIView!
-    @IBOutlet weak var otherFiltersStackView: UIStackView!
-    @IBOutlet weak var attributeFiltersContainer: UIView!
-    @IBOutlet weak var applyFiltersButton: UIButton!
-    @IBOutlet weak var priceFilterContainer: UIView!
+    @IBOutlet weak var filterCollectionView: UICollectionView!
     
-    var mainFilters : [CheckBoxFilter]?
-    var otherFilters: [CheckBoxFilter]?
-    var attributeFilters: [AttributeFilter]?
-    var priceFilterView : PriceFilterView?
+    var filterCollectionLayout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        let width = UIScreen.main.bounds.size.width
+        layout.estimatedItemSize = CGSize(width: width, height: 60)
+        return layout
+    }()
     
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -56,21 +39,22 @@ class FiltersContainerView: UIView, AttributeFilterDelegate, CheckBoxFilterDeleg
         Bundle.main.loadNibNamed("FiltersContainerView", owner: self, options: nil)
         addSubview(contentView)
         layout()
+
+        filterCollectionView.register(CheckBoxCollectoinViewCell.self, forCellWithReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier)
         
-        ServerManager.shared.getMainFilters { filters in
-            self.mainFilters = filters
-            self.configureMainFilters()
-        }
-        ServerManager.shared.getOtherFilters { filters in
-            self.otherFilters = filters
-            self.configureOtherFilters()
-        }
-        ServerManager.shared.getAttributeFilters { filters in
-            self.attributeFilters = filters
-            self.configureAttributeFilters()
-        }
-        configurePriceFilter()
-        layoutIfNeeded()
+        filterCollectionView.register(PriceCollectionViewCell.self, forCellWithReuseIdentifier: PriceCollectionViewCell.reuseIdentifier)
+        
+        let attributeNibCell = UINib(nibName: AttributeCollectionViewCell.reuseIdentifier, bundle: nil)
+        filterCollectionView.register(attributeNibCell, forCellWithReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier)
+        
+        let nibTitle = UINib(nibName: HeaderCollectionView.reuseIdentifier, bundle: nil)
+        filterCollectionView.register(nibTitle, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.reuseIdentifier)
+        
+        filterCollectionView?.collectionViewLayout = filterCollectionLayout
+        
+        filterCollectionView.delegate = self
+        filterCollectionView.dataSource = self
+        
     }
     
     private func layout() {
@@ -84,122 +68,80 @@ class FiltersContainerView: UIView, AttributeFilterDelegate, CheckBoxFilterDeleg
         resetButton.layer.borderWidth = 1
         resetButton.layer.borderColor =  #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
         resetButton.tintColor = UIColor.black
-        applyFiltersButton.tintColor = UIColor.white
-        applyFiltersButton.backgroundColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 1)
-        applyFiltersButton.layoutIfNeeded()
-        applyFiltersButton.layer.cornerRadius = applyFiltersButton.frame.height / 5
-        applyFiltersButton.titleEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
     }
     
-     private func configureAttributeFilters () {
-        self.attributeFiltersContainer.layoutIfNeeded()
-        var lastView = AttributeFilterView()
-        var x:CGFloat = 0
-        var y:CGFloat = 0
-        let xSpacing:CGFloat = 15
-        let ySpacing:CGFloat = 15
-        var tag = 0
-        for attribute in attributeFilters! {
-            let view = AttributeFilterView()
-            view.name.text = attribute.name
-            view.facilityButton.tag = tag
-            view.delegate = self
-            view.layoutIfNeeded()
-            view.frame = CGRect(x:x,y:y,width:view.name.frame.width+22,height:32)
-            if view.frame.width >= self.attributeFiltersContainer.frame.width - x {
-                x = 0
-                y = y + view.frame.height + ySpacing
-            }
-            view.frame = CGRect(x:x,y:y,width:view.frame.width,height:view.frame.height)
-            attributeFiltersContainer.addSubview(view)
-            x = x + view.frame.width + xSpacing
-            lastView = view
-            tag += 1
-        }
-        let verticalSpace = NSLayoutConstraint(item: lastView, attribute: .bottom, relatedBy: .equal, toItem: self.attributeFiltersContainer, attribute: .bottom, multiplier: 1, constant: 0)
-        NSLayoutConstraint.activate([verticalSpace])
-    }
     
-    private func configureMainFilters () {
-        self.mainFiltersContainer.layoutIfNeeded()
-        for mainFilter in self.mainFilters! {
-            let view = CheckBoxFilterView()
-            view.name.text = mainFilter.name
-            view.descriptionLabel.text = mainFilter.description
-            view.delegate = self
-            mainFiltersStackView.addArrangedSubview(view)
-        }
-    }
-    
-    private func configureOtherFilters () {
-        self.otherFiltersContainer.layoutIfNeeded()
-        for otherFilter in otherFilters! {
-            let view = CheckBoxFilterView()
-            view.name.text = otherFilter.name
-            view.descriptionLabel.text = otherFilter.description
-            view.delegate = self
-            otherFiltersStackView.addArrangedSubview(view)
-        }
-    }
-    
-    private func configurePriceFilter () {
-        self.priceFilterContainer.layoutIfNeeded()
-        let view = PriceFilterView(frame: priceFilterContainer.bounds)
-        priceFilterView = view
-        self.priceFilterContainer.addSubview(view)
-    }
-    
-    func attributeFilterPressed(name: String, state: FlagFilterState) {
-        let attribute = attributeFilters?.filter({ (Attribute) -> Bool in
-            Attribute.name == name
-        }).first
-        if attribute != nil {
-        switch state {
-        case .disabled:
-            attribute?.isActive = false
-        default:
-            attribute?.isActive = true
-            }
-        }
-    }
-    
-    func checkBoxFilterPressed(name: String, state: FlagFilterState) {
-        let otherFilter = otherFilters?.filter({ (CheckBoxFilter) -> Bool in
-            CheckBoxFilter.name == name
-        }).first
-        if otherFilter != nil {
-        switch state {
-        case .disabled:
-            otherFilter?.isActive = false
-        default:
-            otherFilter?.isActive = true
-            }
-        }
-    }
-
     @IBAction func resetButtonPressed(_ sender: Any) {
-        for filterView in attributeFiltersContainer.subviews {
-            if let filter = filterView as? AttributeFilterView {
-                filter.state = .disabled
-            }
-        }
-        for filterView in otherFiltersStackView.arrangedSubviews {
-            if let filter = filterView as? CheckBoxFilterView {
-                filter.state = .disabled
-            }
-        }
-        if let priceFilterView = priceFilterView {
-            priceFilterView.resetPriceRange()
-        }
-        for filterView in mainFiltersStackView.arrangedSubviews {
-            if let filter = filterView as? CheckBoxFilterView {
-                filter.state = .disabled
-            }
-        }
+        
     }
     @IBAction func mockButtonClicked(_ sender: Any) {
         //костыль
         //чтобы фильтер вью не уезжал вниз при промахе в ближайшей области он кнопки сбросить
     }
+    
+}
+
+// MARK:  UICollectionViewDataSourse, UICollectionViewDelegate
+
+extension FiltersContainerView : UICollectionViewDataSource, UICollectionViewDelegate {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 4
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+       return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        switch indexPath.section {
+        case 0:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier, for: indexPath) as! CheckBoxCollectoinViewCell
+            cell.name.text = "Закрепленный фильтр \(indexPath.row + 1)"
+            cell.filterDescription.text = "Animation with constraints is easy, you shouldn't believe what others might say. I made some rules and an example that'll help you understanding the basic principles."
+            return cell
+        case 1:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier, for: indexPath) as! CheckBoxCollectoinViewCell
+            cell.name.text = "Фильтр \(indexPath.row + 1)"
+            cell.filterDescription.text = "Even Apple is struggling with adaptive layouts in the built-in iOS applications."
+            return cell
+        case 2:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.reuseIdentifier, for: indexPath) as! PriceCollectionViewCell
+            return cell
+        case 3:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier, for: indexPath) as! AttributeCollectionViewCell
+            if indexPath.row % 2 == 0 {
+                cell.name.text = "Аттрибут \(indexPath.row + 1)"
+            } else {
+                cell.name.text = "Атр. \(indexPath.row + 1 )"
+            }
+            return cell
+        default:
+            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier, for: indexPath) as! AttributeCollectionViewCell
+            return cell
+        }
+        
+    }
+}
+
+// MARK:  UICollectionViewDelegateFlowLayout
+
+extension FiltersContainerView : UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionElementKindSectionHeader:
+            let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.reuseIdentifier, for: indexPath) as! HeaderCollectionView
+            reusableView.groupName.text = "Группа фильтров \(indexPath.section + 1)"
+            return reusableView
+        default:
+            fatalError("Undexpected element kind")
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: contentView.bounds.width, height: 35)
+    }
+    
     
 }
