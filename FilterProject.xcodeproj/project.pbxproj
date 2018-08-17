@@ -23,6 +23,8 @@
 		87B73ABF212187BF0044D758 /* FiltersContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AB7212187BF0044D758 /* FiltersContainerView.xib */; };
 		87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB9212187BF0044D758 /* FiltersContainerView.swift */; };
 		87DE7D682126C80800C63687 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */; };
+		87DE7D6E212715EA00C63687 /* ApplyButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */; };
+		87DE7D6F212715EA00C63687 /* ApplyButtonCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +48,8 @@
 		87B73AB7212187BF0044D758 /* FiltersContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersContainerView.xib; sourceTree = "<group>"; };
 		87B73AB9212187BF0044D758 /* FiltersContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersContainerView.swift; sourceTree = "<group>"; };
 		87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
+		87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyButtonCollectionView.swift; sourceTree = "<group>"; };
+		87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyButtonCollectionView.xib; sourceTree = "<group>"; };
 		FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilterProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -123,6 +127,8 @@
 				87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */,
 				8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */,
 				8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */,
+				87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */,
+				87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -202,6 +208,7 @@
 				8717DD4821243F9000FD01B9 /* AttributeCollectionViewCell.xib in Resources */,
 				8717DD44212421D400FD01B9 /* HeaderCollectionView.xib in Resources */,
 				87B73AA2212185DE0044D758 /* Main.storyboard in Resources */,
+				87DE7D6F212715EA00C63687 /* ApplyButtonCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8717DD3F2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift in Sources */,
+				87DE7D6E212715EA00C63687 /* ApplyButtonCollectionView.swift in Sources */,
 				87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */,
 				8717DD43212421D400FD01B9 /* HeaderCollectionView.swift in Sources */,
 				8717DD4721243F9000FD01B9 /* AttributeCollectionViewCell.swift in Sources */,

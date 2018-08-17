@@ -21,7 +21,7 @@ class FiltersContainerView: UIView {
     var filterCollectionLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         let width = UIScreen.main.bounds.size.width
-        layout.estimatedItemSize = CGSize(width: width, height: 60)
+        layout.estimatedItemSize = CGSize(width: width, height: 1)
         return layout
     }()
     
@@ -50,10 +50,15 @@ class FiltersContainerView: UIView {
         let nibTitle = UINib(nibName: HeaderCollectionView.reuseIdentifier, bundle: nil)
         filterCollectionView.register(nibTitle, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.reuseIdentifier)
         
+        let applyButtonNib = UINib(nibName: ApplyButtonCollectionView.reuseIdentifier, bundle: nil)
+        filterCollectionView.register(applyButtonNib, forSupplementaryViewOfKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ApplyButtonCollectionView.reuseIdentifier)
+        
+        
         filterCollectionView?.collectionViewLayout = filterCollectionLayout
         
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
+        filterCollectionView.reloadData()
         
     }
     
@@ -89,7 +94,18 @@ extension FiltersContainerView : UICollectionViewDataSource, UICollectionViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       return 5
+        switch section {
+        case 0:
+            return 1
+        case 1:
+            return 3
+        case 2:
+            return 1
+        case 3:
+            return 5
+        default:
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -134,6 +150,9 @@ extension FiltersContainerView : UICollectionViewDelegateFlowLayout {
             let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: HeaderCollectionView.reuseIdentifier, for: indexPath) as! HeaderCollectionView
             reusableView.groupName.text = "Группа фильтров \(indexPath.section + 1)"
             return reusableView
+        case UICollectionElementKindSectionFooter:
+            let reusableView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: ApplyButtonCollectionView.reuseIdentifier, for: indexPath) as! ApplyButtonCollectionView
+            return reusableView
         default:
             fatalError("Undexpected element kind")
         }
@@ -143,5 +162,28 @@ extension FiltersContainerView : UICollectionViewDelegateFlowLayout {
         return CGSize(width: contentView.bounds.width, height: 35)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == 3 {
+            return CGSize(width: contentView.bounds.width/2, height: 50)
+        } else {
+            return CGSize.zero
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if section == 3 {
+             return UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        } else {
+            return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        if indexPath.section == 3 {
+            return CGSize(width: UIScreen.main.bounds.size.width-40, height: 1)
+        } else {
+            return CGSize(width: UIScreen.main.bounds.size.width, height: 1)
+        }
+    }
     
 }
