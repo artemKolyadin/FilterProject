@@ -37,6 +37,8 @@ class CheckBoxCollectoinViewCell: UICollectionViewCell {
     
     fileprivate func setupViews () {
         
+        contentView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width).isActive = true
+        
         contentView.addSubview(checkBox)
         checkBox.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 28).isActive = true
         checkBox.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -20).isActive = true
@@ -45,15 +47,16 @@ class CheckBoxCollectoinViewCell: UICollectionViewCell {
         
         contentView.addSubview(name)
         name.topAnchor.constraint(equalTo:contentView.topAnchor, constant: 10).isActive = true
-        name.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        name.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 305/375).isActive = true
-        
+        name.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        name.trailingAnchor.constraint(equalTo: checkBox.leadingAnchor, constant: -20).isActive = true
+
         contentView.addSubview(filterDescription)
         filterDescription.topAnchor.constraint(equalTo: name.bottomAnchor, constant: 10).isActive = true
-        filterDescription.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 20).isActive = true
-        filterDescription.widthAnchor.constraint(equalTo: name.widthAnchor).isActive = true
+        filterDescription.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20).isActive = true
+        filterDescription.trailingAnchor.constraint(equalTo: checkBox.leadingAnchor, constant: -20).isActive = true
         
         contentView.bottomAnchor.constraint(equalTo: filterDescription.bottomAnchor, constant: 10).isActive = true
+        
     }
     
     let name: UILabel = {

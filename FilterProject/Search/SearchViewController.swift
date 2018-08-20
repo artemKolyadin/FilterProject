@@ -22,7 +22,6 @@ private enum State {
 
 class SearchViewController: UITableViewController {
     
-    
     private lazy var blurView: UIVisualEffectView = {
         let blurView = UIVisualEffectView()
         return blurView
@@ -48,6 +47,11 @@ class SearchViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.isTranslucent = false
         navigationController?.view.backgroundColor = .white
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        filterView.filterCollectionView.reloadData()
     }
 
     private var bottomConstraint = NSLayoutConstraint()
@@ -232,6 +236,7 @@ class SearchViewController: UITableViewController {
     
     
     @IBAction func filterButtonClicked(_ sender: Any) {
+        filterView.filterCollectionView.reloadData()
         animateTransitionIfNeeded(to: .open, duration: 0.7)
     }
     
@@ -249,7 +254,6 @@ class SearchViewController: UITableViewController {
     }
     
 }
-
     // MARK:  UITableViewDatasource
 
 extension SearchViewController {

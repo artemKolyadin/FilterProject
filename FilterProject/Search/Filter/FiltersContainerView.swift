@@ -58,8 +58,6 @@ class FiltersContainerView: UIView {
         
         filterCollectionView.delegate = self
         filterCollectionView.dataSource = self
-        filterCollectionView.reloadData()
-        
     }
     
     private func layout() {
@@ -88,55 +86,45 @@ class FiltersContainerView: UIView {
 
 // MARK:  UICollectionViewDataSourse, UICollectionViewDelegate
 
+    private let numberOfRows = [1,2,1,5]
+
+    private var cashedHeights = [IndexPath:CGFloat]()
+
 extension FiltersContainerView : UICollectionViewDataSource, UICollectionViewDelegate {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 4
+        return numberOfRows.count
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return 1
-        case 1:
-            return 3
-        case 2:
-            return 1
-        case 3:
-            return 5
-        default:
-            return 0
-        }
+        return numberOfRows[section]
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        switch indexPath.section {
-        case 0:
-            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier, for: indexPath) as! CheckBoxCollectoinViewCell
-            cell.name.text = "Закрепленный фильтр \(indexPath.row + 1)"
-            cell.filterDescription.text = "Animation with constraints is easy, you shouldn't believe what others might say. I made some rules and an example that'll help you understanding the basic principles."
-            return cell
-        case 1:
-            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier, for: indexPath) as! CheckBoxCollectoinViewCell
-            cell.name.text = "Фильтр \(indexPath.row + 1)"
-            cell.filterDescription.text = "Even Apple is struggling with adaptive layouts in the built-in iOS applications."
-            return cell
-        case 2:
-            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.reuseIdentifier, for: indexPath) as! PriceCollectionViewCell
-            return cell
-        case 3:
-            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier, for: indexPath) as! AttributeCollectionViewCell
-            if indexPath.row % 2 == 0 {
-                cell.name.text = "Аттрибут \(indexPath.row + 1)"
-            } else {
-                cell.name.text = "Атр. \(indexPath.row + 1 )"
-            }
-            return cell
-        default:
-            let cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier, for: indexPath) as! AttributeCollectionViewCell
-            return cell
-        }
+        var cell: UICollectionViewCell?
         
+        switch indexPath.section {
+        case 0,1:
+            let checkBoxCell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: CheckBoxCollectoinViewCell.reuseIdentifier, for: indexPath) as? CheckBoxCollectoinViewCell
+            checkBoxCell?.name.text = indexPath.section == 0 ? "Закрепленный фильтр \(indexPath.row + 1)" : "Фильтр \(indexPath.row + 1)"
+            checkBoxCell?.filterDescription.text = indexPath.section == 0 ? "Animation with constraints is easy, you shouldn't believe what others might say. I made some rules and an example that'll help you understanding the basic principles." : "Even Apple is struggling with adaptive layouts in the built-in iOS applications."
+            checkBoxCell?.filterDescription.sizeToFit()
+            cell = checkBoxCell
+        case 2:
+             cell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: PriceCollectionViewCell.reuseIdentifier, for: indexPath) as? PriceCollectionViewCell
+        case 3:
+            let attributeCell = filterCollectionView.dequeueReusableCell(withReuseIdentifier: AttributeCollectionViewCell.reuseIdentifier, for: indexPath) as? AttributeCollectionViewCell
+            attributeCell?.name.text = indexPath.row % 2 == 0 ? "Аттрибут \(indexPath.row + 1)" : "Аттр. \(indexPath.row + 1)"
+            cell = attributeCell
+        default:
+            fatalError("Unexpected section")
+        }
+        cell?.layoutSubviews()
+        
+        if cell?.systemLayoutSizeFitting(UILayoutFittingExpandedSize) != nil {
+            cashedHeights[indexPath] = cell?.systemLayoutSizeFitting(UILayoutFittingExpandedSize).height
+        }
+        return cell ?? UICollectionViewCell(frame: CGRect.zero)
     }
 }
 
@@ -157,6 +145,7 @@ extension FiltersContainerView : UICollectionViewDelegateFlowLayout {
             fatalError("Undexpected element kind")
         }
     }
+
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: contentView.bounds.width, height: 35)
@@ -179,11 +168,17 @@ extension FiltersContainerView : UICollectionViewDelegateFlowLayout {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if indexPath.section == 3 {
-            return CGSize(width: UIScreen.main.bounds.size.width-40, height: 1)
-        } else {
-            return CGSize(width: UIScreen.main.bounds.size.width, height: 1)
-        }
+        let itemHeight = cashedHeights[indexPath] ?? 60
+        let itemWidth = indexPath.section == 3 ? UIScreen.main.bounds.size.width - 40 : UIScreen.main.bounds.size.width
+        return CGSize(width: itemWidth, height: itemHeight)
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 15.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 15.0
+    }
+
 }
