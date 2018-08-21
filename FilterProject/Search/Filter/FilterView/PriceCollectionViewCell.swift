@@ -54,7 +54,6 @@ class PriceCollectionViewCell: UICollectionViewCell {
     
     let rangeSlider: RangeSlider = {
         let slider = RangeSlider(frame: CGRect(x:0,y:0,width: UIScreen.main.bounds.size.width-40, height:30))
-        slider.backgroundColor = UIColor.lightGray
         slider.knobTintColor = UIColor.white
         slider.knobBorderThickness = 0.5
         slider.minimumValue = 2000
@@ -70,7 +69,6 @@ class PriceCollectionViewCell: UICollectionViewCell {
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 13)
         label.text = "Диапазон значений"
-        label.backgroundColor = UIColor.orange
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()

@@ -14,7 +14,7 @@ class CheckBoxCollectoinViewCell: UICollectionViewCell {
         let width = contentView.widthAnchor.constraint(equalToConstant: bounds.size.width)
         width.isActive = true
         return width
-    }() 
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,6 +34,7 @@ class CheckBoxCollectoinViewCell: UICollectionViewCell {
         width.constant = bounds.size.width
         return contentView.systemLayoutSizeFitting(CGSize(width: targetSize.width, height: 1))
     }
+    
     
     fileprivate func setupViews () {
         

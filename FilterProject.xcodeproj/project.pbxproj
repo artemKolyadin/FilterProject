@@ -8,11 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		1431D3C992A6340D8421E202 /* Pods_FilterProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */; };
+		8707C22D212C06F200DD20C8 /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707C22C212C06F200DD20C8 /* FilterView.swift */; };
+		8707C231212C0ED900DD20C8 /* FilterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707C230212C0ED900DD20C8 /* FilterPresenter.swift */; };
+		8707C233212C112100DD20C8 /* FilterConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707C232212C112100DD20C8 /* FilterConfigurator.swift */; };
+		8707C235212C1A9700DD20C8 /* FilterInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707C234212C1A9700DD20C8 /* FilterInteractor.swift */; };
+		8707C238212C23DC00DD20C8 /* FilterRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707C237212C23DC00DD20C8 /* FilterRouter.swift */; };
 		8717DD3F2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */; };
 		8717DD43212421D400FD01B9 /* HeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */; };
-		8717DD44212421D400FD01B9 /* HeaderCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */; };
 		8717DD4721243F9000FD01B9 /* AttributeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */; };
-		8717DD4821243F9000FD01B9 /* AttributeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */; };
 		871E52D421218C8300D3C824 /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E52D221218C8300D3C824 /* Models.swift */; };
 		871E52D621218CF700D3C824 /* ServerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871E52D521218CF700D3C824 /* ServerManager.swift */; };
 		87B73A9D212185DE0044D758 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73A9C212185DE0044D758 /* AppDelegate.swift */; };
@@ -20,21 +23,22 @@
 		87B73AA4212185E30044D758 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AA3212185E30044D758 /* Assets.xcassets */; };
 		87B73AA7212185E30044D758 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AA5212185E30044D758 /* LaunchScreen.storyboard */; };
 		87B73AAF212186530044D758 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AAE212186530044D758 /* SearchViewController.swift */; };
-		87B73ABF212187BF0044D758 /* FiltersContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87B73AB7212187BF0044D758 /* FiltersContainerView.xib */; };
-		87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B73AB9212187BF0044D758 /* FiltersContainerView.swift */; };
+		87C6784F212C393200B39017 /* FilterView.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 87C6784E212C393200B39017 /* FilterView.storyboard */; };
 		87DE7D682126C80800C63687 /* PriceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */; };
-		87DE7D6E212715EA00C63687 /* ApplyButtonCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */; };
-		87DE7D6F212715EA00C63687 /* ApplyButtonCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */; };
+		87DE7D6E212715EA00C63687 /* FooterCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87DE7D6C212715EA00C63687 /* FooterCollectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		38F8C5AC0BFF3489DEB4F584 /* Pods-FilterProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilterProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-FilterProject/Pods-FilterProject.release.xcconfig"; sourceTree = "<group>"; };
 		53F008A11E55610336B85748 /* Pods-FilterProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FilterProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-FilterProject/Pods-FilterProject.debug.xcconfig"; sourceTree = "<group>"; };
+		8707C22C212C06F200DD20C8 /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		8707C230212C0ED900DD20C8 /* FilterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterPresenter.swift; sourceTree = "<group>"; };
+		8707C232212C112100DD20C8 /* FilterConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterConfigurator.swift; sourceTree = "<group>"; };
+		8707C234212C1A9700DD20C8 /* FilterInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterInteractor.swift; sourceTree = "<group>"; };
+		8707C237212C23DC00DD20C8 /* FilterRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterRouter.swift; sourceTree = "<group>"; };
 		8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxCollectoinViewCell.swift; sourceTree = "<group>"; };
 		8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionView.swift; sourceTree = "<group>"; };
-		8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCollectionView.xib; sourceTree = "<group>"; };
 		8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttributeCollectionViewCell.swift; sourceTree = "<group>"; };
-		8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AttributeCollectionViewCell.xib; sourceTree = "<group>"; };
 		871E52D221218C8300D3C824 /* Models.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		871E52D521218CF700D3C824 /* ServerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerManager.swift; sourceTree = "<group>"; };
 		876C30502125BBDB0097455E /* RangeSeekSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RangeSeekSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,11 +49,9 @@
 		87B73AA6212185E30044D758 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		87B73AA8212185E30044D758 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		87B73AAE212186530044D758 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
-		87B73AB7212187BF0044D758 /* FiltersContainerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FiltersContainerView.xib; sourceTree = "<group>"; };
-		87B73AB9212187BF0044D758 /* FiltersContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersContainerView.swift; sourceTree = "<group>"; };
+		87C6784E212C393200B39017 /* FilterView.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FilterView.storyboard; sourceTree = "<group>"; };
 		87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCollectionViewCell.swift; sourceTree = "<group>"; };
-		87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyButtonCollectionView.swift; sourceTree = "<group>"; };
-		87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyButtonCollectionView.xib; sourceTree = "<group>"; };
+		87DE7D6C212715EA00C63687 /* FooterCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionView.swift; sourceTree = "<group>"; };
 		FA2300EC77757E1003ACD7A0 /* Pods_FilterProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FilterProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,20 @@
 				38F8C5AC0BFF3489DEB4F584 /* Pods-FilterProject.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8707C236212C1DFE00DD20C8 /* FilterView */ = {
+			isa = PBXGroup;
+			children = (
+				8707C22C212C06F200DD20C8 /* FilterView.swift */,
+				87C6784E212C393200B39017 /* FilterView.storyboard */,
+				8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */,
+				8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */,
+				87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */,
+				8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */,
+				87DE7D6C212715EA00C63687 /* FooterCollectionView.swift */,
+			);
+			path = FilterView;
 			sourceTree = "<group>";
 		};
 		87B73A90212185DE0044D758 = {
@@ -119,16 +135,11 @@
 		87B73AB3212187A60044D758 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
-				87B73AB9212187BF0044D758 /* FiltersContainerView.swift */,
-				87B73AB7212187BF0044D758 /* FiltersContainerView.xib */,
-				8717DD3D2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift */,
-				8717DD4521243F9000FD01B9 /* AttributeCollectionViewCell.swift */,
-				8717DD4621243F9000FD01B9 /* AttributeCollectionViewCell.xib */,
-				87DE7D662126C80800C63687 /* PriceCollectionViewCell.swift */,
-				8717DD41212421D400FD01B9 /* HeaderCollectionView.swift */,
-				8717DD42212421D400FD01B9 /* HeaderCollectionView.xib */,
-				87DE7D6C212715EA00C63687 /* ApplyButtonCollectionView.swift */,
-				87DE7D6D212715EA00C63687 /* ApplyButtonCollectionView.xib */,
+				8707C236212C1DFE00DD20C8 /* FilterView */,
+				8707C230212C0ED900DD20C8 /* FilterPresenter.swift */,
+				8707C234212C1A9700DD20C8 /* FilterInteractor.swift */,
+				8707C232212C112100DD20C8 /* FilterConfigurator.swift */,
+				8707C237212C23DC00DD20C8 /* FilterRouter.swift */,
 			);
 			path = Filter;
 			sourceTree = "<group>";
@@ -203,12 +214,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				87B73AA7212185E30044D758 /* LaunchScreen.storyboard in Resources */,
+				87C6784F212C393200B39017 /* FilterView.storyboard in Resources */,
 				87B73AA4212185E30044D758 /* Assets.xcassets in Resources */,
-				87B73ABF212187BF0044D758 /* FiltersContainerView.xib in Resources */,
-				8717DD4821243F9000FD01B9 /* AttributeCollectionViewCell.xib in Resources */,
-				8717DD44212421D400FD01B9 /* HeaderCollectionView.xib in Resources */,
 				87B73AA2212185DE0044D758 /* Main.storyboard in Resources */,
-				87DE7D6F212715EA00C63687 /* ApplyButtonCollectionView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,10 +267,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8717DD3F2124126F00FD01B9 /* CheckBoxCollectoinViewCell.swift in Sources */,
-				87DE7D6E212715EA00C63687 /* ApplyButtonCollectionView.swift in Sources */,
-				87B73AC1212187BF0044D758 /* FiltersContainerView.swift in Sources */,
+				87DE7D6E212715EA00C63687 /* FooterCollectionView.swift in Sources */,
+				8707C235212C1A9700DD20C8 /* FilterInteractor.swift in Sources */,
 				8717DD43212421D400FD01B9 /* HeaderCollectionView.swift in Sources */,
 				8717DD4721243F9000FD01B9 /* AttributeCollectionViewCell.swift in Sources */,
+				8707C22D212C06F200DD20C8 /* FilterView.swift in Sources */,
+				8707C233212C112100DD20C8 /* FilterConfigurator.swift in Sources */,
+				8707C238212C23DC00DD20C8 /* FilterRouter.swift in Sources */,
+				8707C231212C0ED900DD20C8 /* FilterPresenter.swift in Sources */,
 				871E52D421218C8300D3C824 /* Models.swift in Sources */,
 				87DE7D682126C80800C63687 /* PriceCollectionViewCell.swift in Sources */,
 				87B73AAF212186530044D758 /* SearchViewController.swift in Sources */,

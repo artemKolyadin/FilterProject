@@ -35,7 +35,7 @@
                     <navigationItem key="navigationItem" title="Главная лента" id="UEE-l4-unx">
                         <barButtonItem key="rightBarButtonItem" title="Фильтры" id="aaQ-jM-qBT">
                             <connections>
-                                <action selector="filterButtonClicked:" destination="lxx-YM-oCt" id="Nfh-3J-FuQ"/>
+                                <segue destination="5im-Rk-78M" kind="presentation" id="MQO-Cv-MXl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -43,6 +43,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwr-O1-Rz7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="971" y="230"/>
+        </scene>
+        <!--FilterView-->
+        <scene sceneID="3Ag-1x-oFO">
+            <objects>
+                <viewControllerPlaceholder storyboardName="FilterView" id="5im-Rk-78M" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XfA-i1-Ggf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1634" y="589"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="0cX-Sa-7M7">
